@@ -1,16 +1,23 @@
 import React from 'react'
 
-const TaskItem = ({task, removeTask}) => {
+const TaskItem = ({task, removeTask, completeTask}) => {
     const handleRemove = () => {
         removeTask(task)
     }
-    const buttonStyle = {
+    const handleComplete = () => {
+        completeTask(task)
+    }
+    const removeButtonStyle = {
         display: task.state === "removed" ? "none" : "inline-block"
+    }
+    const completeButtonStyle = {
+        display: task.state === "completed" ? "none" : "inline-block"
     }
     return (
         <section>
             {`name: ${task.name}`}
-            <button style={buttonStyle} onClick={handleRemove}>Remove</button>
+            <button style={removeButtonStyle} onClick={handleRemove}>Remove</button>
+            <button style={completeButtonStyle} onClick={handleComplete}>Complete</button>
         </section>
     )
 }

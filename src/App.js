@@ -24,6 +24,14 @@ const App = () => {
         {id: removedTask.id,name: removedTask.name, state: "removed"}
       ])
   }
+  const completeTask = (completedTask) => {
+    const comTasks = tasks.filter((task)=>task.id!==completedTask.id)
+    setTasks([
+      ...comTasks,
+      {id: completedTask.id,name: completedTask.name, state: "completed"}
+    ])
+}
+  
   useEffect(()=>{
     const tempTasks = tasks.filter((task)=>task.state===state)
     setFilteredTasks(tempTasks)
@@ -31,7 +39,7 @@ const App = () => {
   return (
     <>
       <Header state={state} setState={setState}/> 
-      <Main tasks={filteredTasks} addTask={addTask} removeTask={removeTask} />
+      <Main tasks={filteredTasks} addTask={addTask} removeTask={removeTask} completeTask={completeTask} />
     </>
   );
 }

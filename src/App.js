@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from "react";
-import Header from "./Header";
-import Main from "./Main";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+import './App.css'
 
 const App = () => {
   const id = useId()
@@ -37,10 +38,10 @@ const App = () => {
     setFilteredTasks(tempTasks)
   },[state, tasks])
   return (
-    <>
+    <div className="content">
       <Header state={state} setState={setState}/> 
       <Main tasks={filteredTasks} addTask={addTask} removeTask={removeTask} completeTask={completeTask} />
-    </>
+    </div>
   );
 }
 

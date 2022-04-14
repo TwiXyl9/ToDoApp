@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
+
+body{
+    width: 30%;
+    margin: 0 auto;
+}
+
+.content
+{
+    width: 400px;
+    display: inline-block;
+    border-radius: 20px;
+    background-color: #E4FFFC;
+    color: #5C5959;
+    padding: 20px;
+    font-size: 23px;
+    font-family: 'Rationale', sans-serif;
+}
+
+
+main > *, header > *
+{
+    margin-bottom: 7px;  
+} 
+
+button:hover{
+    cursor: pointer;
+}

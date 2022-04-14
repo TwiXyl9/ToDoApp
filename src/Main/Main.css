@@ -1,0 +1,54 @@
+*
+{
+    margin-bottom: 7px;  
+}
+
+section
+{
+    border-radius: 10px;
+    padding: 7px;
+}
+
+section > * 
+{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+section .remove_button
+{
+    opacity: 0;
+}
+
+section:hover
+{
+    transition-duration: .3s;
+    box-shadow: 10px 5px 5px black;
+    background-color: #99D7D07D;
+}
+
+section:hover .remove_button
+{
+    opacity: 1;
+    transition: opacity .5s;
+    transition-delay: .2s;
+    animation-duration: .25s;
+    visibility: visible;
+}
+
+input
+{
+    font-size: 23px;
+    font-family: 'Rationale';
+}
+
+.circle
+{
+    width: 25px;
+    height: 25px;
+    float: left;
+    background-color: transparent;
+    color: #FC5079;
+    border: 1px solid #FC5079;
+    border-radius: 100%;
+}

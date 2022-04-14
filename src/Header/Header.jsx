@@ -1,4 +1,7 @@
 import React from 'react'
+import './Header.css'
+import '../App.css'
+
 
 const Header = ({state,setState}) => {
     const date = new Date().toDateString()

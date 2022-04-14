@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import TaskItem from './TaskItem'
+import TaskItem from '../TaskItem/TaskItem'
+import './Main.css'
 
 const Main = ({tasks,addTask, removeTask, completeTask}) => {
     const [inputTask,setInputTask] = useState("")
@@ -17,8 +18,9 @@ const Main = ({tasks,addTask, removeTask, completeTask}) => {
             {tasks.map((task)=> (
                 <TaskItem key={task.id} task={task} removeTask={removeTask} completeTask={completeTask}/>
             ))}
-            <input value={inputTask} onChange={handleInput}></input>
-            <button onClick={handleClick}>Add Task</button>
+            <section className='new_item'>
+                <button onClick={handleClick} className='circle'>+</button><input value={inputTask} onChange={handleInput} placeholder="Enter new task..."></input>
+            </section>
         </main>
     )
 }

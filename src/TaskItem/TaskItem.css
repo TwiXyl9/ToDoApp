@@ -1,0 +1,24 @@
+.completed{
+    text-decoration: line-through;
+}
+
+.remove_button
+{
+    width: 25px;
+    height: 25px;
+    float: right;
+    background-color: transparent;
+    color: rgb(250, 41, 41);
+    border: 1.5px solid rgb(250, 41, 41);
+    border-radius: 100%;
+}
+
+.complete_button
+{
+    width: 25px;
+    height: 25px;
+    float: left;
+    background-color: transparent;
+    border: 1px solid #447B75;
+    border-radius: 100%;
+}

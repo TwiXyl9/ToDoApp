@@ -1,12 +1,12 @@
 import React from 'react'
 import './TaskItem.css'
 
-const TaskItem = ({task, removeTask, completeTask}) => {
+const TaskItem = ({task, removeTask, changeTaskType}) => {
     const handleRemove = () => {
         removeTask(task)
     }
-    const handleComplete = () => {
-        completeTask(task)
+    const handleChange = (event) => {
+        changeTaskType(task, event.target.checked)
     }
     const removeButtonStyle = {
         display: task.state === "removed" ? "none" : "inline-block"
@@ -16,7 +16,7 @@ const TaskItem = ({task, removeTask, completeTask}) => {
     }
     return (
         <section className={task.state}>
-            <button className='complete_button' style={completeButtonStyle} onClick={handleComplete}></button> 
+            <input type="checkbox" className='checkbox-round'checked={task.state === "completed" ? true : false} onChange={handleChange}/>
             {task.name}
             <button className='remove_button' style={removeButtonStyle} onClick={handleRemove}>x</button>
         </section>

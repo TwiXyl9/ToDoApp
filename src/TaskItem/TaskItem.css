@@ -13,12 +13,30 @@
     border-radius: 100%;
 }
 
-.complete_button
+
+input[type='checkbox']
 {
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+}
+
+
+.checkbox-round {
     width: 25px;
     height: 25px;
-    float: left;
-    background-color: transparent;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
     border: 1px solid #447B75;
-    border-radius: 100%;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:hover
+{
+    background-color: #447B75;
+}
+
+.checkbox-round:checked {
+    background-color: #EEEEEE;
 }

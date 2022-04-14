@@ -29,14 +29,17 @@ const App = () => {
         {id: removedTask.id,name: removedTask.name, state: "removed"}
       ])
   }
-  const completeTask = (completedTask) => {
-    const comTasks = tasks.filter((task)=>task.id!==completedTask.id)
-    setTasks([
-      ...comTasks,
-      {id: completedTask.id,name: completedTask.name, state: "completed"}
-    ])
-}
-  
+  const changeTaskType = (taskToChange, checked) => 
+  {
+    const newTasks = tasks.filter((task)=>task.id!==taskToChange.id)
+    let newState = checked === true ? "completed" : "progress"
+    setTasks(
+      [
+        ...newTasks,
+        {id: taskToChange.id, name: taskToChange.name, state: newState}
+      ])
+  }
+
   useEffect(()=>{
     const tempTasks = tasks.filter((task)=>task.state===state)
     setFilteredTasks(tempTasks)
@@ -44,7 +47,7 @@ const App = () => {
   return (
     <div className="content">
       <Header state={state} setState={setState}/> 
-      <Main tasks={filteredTasks} addTask={addTask} removeTask={removeTask} completeTask={completeTask} />
+      <Main tasks={filteredTasks} addTask={addTask} removeTask={removeTask}changeTaskType={changeTaskType}/>
     </div>
   );
 }

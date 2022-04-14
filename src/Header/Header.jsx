@@ -33,7 +33,7 @@ const Header = ({state,setState}) => {
     
     return (
         <header>
-            <div>{date}</div>
+            <div>{date}. Hey, Mike!</div>
             <div className='plan'>
                 <label>What's your plan?</label>
                 <button className='triangle_button'onClick={handleMenuClick}>{isOpenButtonState}</button>

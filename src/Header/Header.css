@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
 
-
 .plan
 {
     width: 100%;
@@ -22,6 +21,12 @@
     font-size: 33px;
     border-radius: 0px 10px 10px 0px;
     background-color: #447B75;
+}
+
+.nav_buttons
+{
+    display: flex;
+    justify-content: center;
 }
 
 .nav_buttons button

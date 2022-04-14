@@ -1,9 +1,12 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import Main from "./Main";
 
 const App = () => {
-  const id = useId()
+  const newId = (tasks) => {
+    const max = tasks.reduce((acc, curr) => acc.id > curr.id ? acc : curr);
+    return max.id
+  }
   const [state,setState] = useState("progress")
   const [tasks,setTasks] = useState([
     {id: 1, name: "Task1", state:"progress"},
@@ -12,6 +15,7 @@ const App = () => {
   ])
   const [filteredTasks,setFilteredTasks]=useState([])
   const addTask = (taskName) => {
+    const id = newId(tasks)+1
     setTasks([
       ...tasks,
       {id: id,name: taskName, state: "progress"}

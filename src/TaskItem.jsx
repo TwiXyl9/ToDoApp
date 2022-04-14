@@ -15,7 +15,7 @@ const TaskItem = ({task, removeTask, completeTask}) => {
     }
     return (
         <section>
-            {`name: ${task.name}`}
+            {task.name}
             <button style={removeButtonStyle} onClick={handleRemove}>Remove</button>
             <button style={completeButtonStyle} onClick={handleComplete}>Complete</button>
         </section>

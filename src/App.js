@@ -5,7 +5,7 @@ import './App.css'
 
 const App = () => {
   const newId = (tasks) => {
-    const max = tasks.reduce((acc, curr) => acc.id > curr.id ? acc : curr);
+    const max = tasks.length === 0 ? {id: 0} : tasks.reduce((acc, curr) => acc.id > curr.id ? acc : curr);
     return max.id
   }
   const [state,setState] = useState("progress")
@@ -19,11 +19,12 @@ const App = () => {
     const id = newId(tasks)+1
     setTasks([
       ...tasks,
-      {id: id,name: taskName, state: "progress"}
+      {id: id, name: taskName, state: "progress"}
     ])
   }
   const deleteTask = (deletedTask) => {
-    const leftTasks = tasks.filter((task)=>task.id!==deletedTask.id)
+    let leftTasks = tasks.filter((task)=>task.id!==deletedTask.id)
+    leftTasks = leftTasks.length === 0 ? [] : leftTasks
     setTasks(leftTasks)
   }
   const removeTask = (removedTask) => {

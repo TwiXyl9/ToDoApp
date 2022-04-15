@@ -28,7 +28,7 @@ const Header = ({state,setState}) => {
         }
     }
     const buttonStyle = {
-        display: isOpen? "inline-block" : "none"
+        display: isOpen? "inline-block" : "none",
     }
     
     return (
@@ -41,9 +41,9 @@ const Header = ({state,setState}) => {
             </div>  
             
             <div className='nav_buttons'>
-                <button value="completed" style={buttonStyle} onClick={handleChange}>Completed</button>
-                <button value="progress" style={buttonStyle} onClick={handleChange}>In Progress</button>
-                <button value="removed" style={buttonStyle} onClick={handleChange}>Removed</button>
+                <button className={state ==='completed' ? 'selected_button' : ''} value="completed" style={buttonStyle} onClick={handleChange}>Completed</button>
+                <button className={state ==='progress' ? 'selected_button' : ''} value="progress" style={buttonStyle} onClick={handleChange}>In Progress</button>
+                <button className={state ==='removed' ? 'selected_button' : ''} value="removed" style={buttonStyle} onClick={handleChange}>Removed</button>
             </div>
             <div>
                 {listName}

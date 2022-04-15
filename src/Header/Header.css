@@ -41,3 +41,8 @@
     font-size: 15px;
     font-family: 'Rationale';
 }
+
+.selected_button
+{
+    color: #EE7291B0;
+}

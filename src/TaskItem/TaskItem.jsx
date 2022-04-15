@@ -3,7 +3,7 @@ import './TaskItem.css'
 
 const TaskItem = ({task, deleteTask, removeTask, changeTaskType}) => {
     const handleRemove = () => {
-        if (task.state === 'removed')
+        if (task.attributes.state === 'removed')
             deleteTask(task)
         else
             removeTask(task)
@@ -12,13 +12,13 @@ const TaskItem = ({task, deleteTask, removeTask, changeTaskType}) => {
         changeTaskType(task, event.target.checked)
     }
     return (
-        <section className={task.state}>
+        <section className={task.attributes.state}>
             <div className='round'>
-                <input type="checkbox" id={'checkbox-' + task.id} checked={task.state === "completed" ? true : false} onChange={handleChange}/>
+                <input type="checkbox" id={'checkbox-' + task.id} checked={task.attributes.state === "completed" ? true : false} onChange={handleChange}/>
                 <label for={'checkbox-' + task.id}></label>
             </div>
             <div className='text'>
-                {task.name}
+                {task.attributes.name}
             </div>
             <button className='remove_button' onClick={handleRemove}>
                 <svg class="svg-icon" viewBox="0 0 100 100">

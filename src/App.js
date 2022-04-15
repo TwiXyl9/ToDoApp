@@ -1,54 +1,122 @@
 import { useEffect, useState } from "react";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
+import axios from 'axios'
 import './App.css'
 
+const API_URL = "http://localhost:3000/api/v1/items"
+
+function getAPIData() 
+{
+  return axios.get(API_URL).then(resp => resp.data.data)
+}
+
+function printErrorInConsole(code)
+{
+  console.log("Something went wront. Error code: "+code)
+}
 const App = () => {
-  const newId = (tasks) => {
-    const max = tasks.length === 0 ? {id: 0} : tasks.reduce((acc, curr) => acc.id > curr.id ? acc : curr);
-    return max.id
-  }
   const [state,setState] = useState("progress")
-  const [tasks,setTasks] = useState([
-    {id: 1, name: "Task1", state:"progress"},
-    {id: 2, name: "Task2", state:"completed"},
-    {id: 3, name: "Task3", state:"removed"}
-  ])
+  const [tasks,setTasks] = useState([])
   const [filteredTasks,setFilteredTasks]=useState([])
+
+  // POST
   const addTask = (taskName) => {
-    const id = newId(tasks)+1
-    setTasks([
-      ...tasks,
-      {id: id, name: taskName, state: "progress"}
-    ])
-  }
-  const deleteTask = (deletedTask) => {
-    let leftTasks = tasks.filter((task)=>task.id!==deletedTask.id)
-    leftTasks = leftTasks.length === 0 ? [] : leftTasks
-    setTasks(leftTasks)
-  }
-  const removeTask = (removedTask) => {
-      const remTasks = tasks.filter((task)=>task.id!==removedTask.id)
-      setTasks([
-        ...remTasks,
-        {id: removedTask.id,name: removedTask.name, state: "removed"}
-      ])
-  }
-  const changeTaskType = (taskToChange, checked) => 
-  {
-    const newTasks = tasks.filter((task)=>task.id!==taskToChange.id)
-    let newState = checked === true ? "completed" : "progress"
-    setTasks(
-      [
-        ...newTasks,
-        {id: taskToChange.id, name: taskToChange.name, state: newState}
-      ])
+
+    const newTask = { item: {name: taskName, state: "progress"}}
+    axios.post(API_URL, newTask).then(
+      (resp) => {
+        if (resp.status === 200)
+        {
+          setTasks([
+            ...tasks,
+            resp.data.data
+          ])
+        }
+        else 
+          printErrorInConsole(resp.status)
+      }
+    )
   }
 
+  //DELETE
+  const deleteTask = (deletedTask) => {
+    axios.delete(API_URL+'/'+deletedTask.id)
+    .then((resp)=>
+    {
+      if (resp.status === 204)
+        {
+          let leftTasks = tasks.filter((task)=>task.id!==deletedTask.id)
+          leftTasks = leftTasks.length === 0 ? [] : leftTasks
+          setTasks(leftTasks)
+        }
+      else
+        {
+          printErrorInConsole(resp.status)
+        }
+    })
+  }
+
+  //PATCH
+  const removeTask = (removedTask) => {
+      const toUpdate = { item: {state: "removed"} }
+      axios.patch(API_URL+'/'+removedTask.id, toUpdate)
+      .then((resp)=>{
+          if(resp.status === 200)
+          {
+            const remTasks = tasks.filter((task)=>task.id!==removedTask.id)
+            setTasks([
+            ...remTasks,
+              resp.data.data
+            ])
+          }
+          else
+          {
+            printErrorInConsole(resp.status)
+          }
+      })
+  }
+
+  //PATCH
+  const changeTaskType = (taskToChange, checked) => 
+  {
+    const newState = checked === true ? "completed" : "progress"
+    const toUpdate = { item: {state: newState} }
+      axios.patch(API_URL+'/'+taskToChange.id, toUpdate)
+      .then((resp)=>{
+          if(resp.status === 200)
+          {
+            const remTasks = tasks.filter((task)=>task.id!==taskToChange.id)
+            setTasks([
+            ...remTasks,
+              resp.data.data
+            ])
+          }
+          else
+          {
+            printErrorInConsole(resp.status)
+          }
+      })
+  }
+
+  useEffect(()=>
+  {
+    let mounted = true;
+    getAPIData().then((items)=>
+    {
+      if (mounted)
+      {
+        setTasks(items)
+      }
+    })
+    return () => (mounted = false)
+  }, [])
+
   useEffect(()=>{
-    const tempTasks = tasks.filter((task)=>task.state===state)
+    const tempTasks = tasks.filter((task)=>task.attributes.state===state)
     setFilteredTasks(tempTasks)
   },[state, tasks])
+
   return (
     <div className="content">
       <Header state={state} setState={setState}/> 

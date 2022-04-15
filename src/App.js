@@ -22,6 +22,10 @@ const App = () => {
       {id: id,name: taskName, state: "progress"}
     ])
   }
+  const deleteTask = (deletedTask) => {
+    const leftTasks = tasks.filter((task)=>task.id!==deletedTask.id)
+    setTasks(leftTasks)
+  }
   const removeTask = (removedTask) => {
       const remTasks = tasks.filter((task)=>task.id!==removedTask.id)
       setTasks([
@@ -47,7 +51,7 @@ const App = () => {
   return (
     <div className="content">
       <Header state={state} setState={setState}/> 
-      <Main tasks={filteredTasks} addTask={addTask} removeTask={removeTask}changeTaskType={changeTaskType}/>
+      <Main state={state} tasks={filteredTasks} addTask={addTask} deleteTask={deleteTask} removeTask={removeTask} changeTaskType={changeTaskType}/>
     </div>
   );
 }

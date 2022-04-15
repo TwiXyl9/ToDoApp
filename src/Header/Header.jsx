@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import './Header.css'
 import '../App.css'
 import Image from "../images/img.png"
@@ -6,7 +6,6 @@ import Image from "../images/img.png"
 const Header = ({state,setState}) => {
     const date = new Date().getDate()
     const [listName, setListName] = useState("Upcoming To-Do's")
-    let oneButtonSymb = "▴"
     const [isOpenButtonState,setIsOpenButtonState] = useState("▾")
     const [isOpen,setIsOpen] = useState(false)
     const handleChange = (event) => {

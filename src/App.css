@@ -13,12 +13,17 @@ body{
     background-color: #E4FFFC;
     color: #5C5959;
     padding: 20px;
-    font-size: 23px;
+    font-size: 28px;
     font-family: 'Rationale', sans-serif;
 }
 
+header
+{
+    margin-bottom: 10px;
+}
 
-main > *, header > *
+
+main > *
 {
     padding-left: 7px;
     margin-bottom: 7px;  

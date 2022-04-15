@@ -1,5 +1,6 @@
 section
 {
+    height: 30px;
     border-radius: 10px;
     padding: 7px;
 }
@@ -7,7 +8,12 @@ section
 section > * 
 {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 7px;
+}
+
+.text
+{
+    margin-left: 7px;
 }
 
 section .remove_button
@@ -18,7 +24,7 @@ section .remove_button
 section:hover
 {
     transition-duration: .3s;
-    box-shadow: 10px 5px 5px black;
+    box-shadow: 1px 4px 6px #447B75; 
     background-color: #99D7D07D;
 }
 
@@ -35,15 +41,30 @@ input
 {
     font-size: 23px;
     font-family: 'Rationale';
+    padding-left: 0px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+input::placeholder
+{
+    color: #FC5079;
 }
 
 .circle
 {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     float: left;
     background-color: transparent;
     color: #FC5079;
     border: 1px solid #FC5079;
     border-radius: 100%;
+}
+
+.circle:hover
+{
+    transition-duration: .5s;
+    background-color: #fc85a0a1;
 }

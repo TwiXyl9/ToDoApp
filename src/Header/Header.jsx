@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './Header.css'
 import '../App.css'
+import Image from "../images/img.png"
 
 const Header = ({state,setState}) => {
-    const date = new Date().toDateString()
+    const date = new Date().getDate()
     const [listName, setListName] = useState("Upcoming To-Do's")
     let oneButtonSymb = "▴"
     const [isOpenButtonState,setIsOpenButtonState] = useState("▾")
@@ -33,7 +34,10 @@ const Header = ({state,setState}) => {
     
     return (
         <header>
-            <div>{date}. Hey, Mike!</div>
+            <div className='calendar'>
+                <img src={Image} alt="calendar"></img>
+                <div id='calendar_text'>{date}</div> <span id='greetings'>Hey, Mike!</span>
+            </div>
             <div className='plan'>
                 <label>What's your plan?</label>
                 <button className='triangle_button'onClick={handleMenuClick}>{isOpenButtonState}</button>
@@ -45,9 +49,8 @@ const Header = ({state,setState}) => {
                 <button className={state ==='progress' ? 'selected_button' : ''} value="progress" style={buttonStyle} onClick={handleChange}>In Progress</button>
                 <button className={state ==='removed' ? 'selected_button' : ''} value="removed" style={buttonStyle} onClick={handleChange}>Removed</button>
             </div>
-            <div>
+            <div className='listname'>
                 {listName}
-                <hr/>
             </div>
         </header>
         

@@ -1,48 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rationale&family=Reem+Kufi&display=swap');
+
+
+.calendar 
+{
+    position: relative;
+}
+
+.calendar > span
+{
+    position: absolute;
+    font-family: 'Reem Kufi';
+    font-size: 20px;
+    left: 42px;
+    top: 4px;
+}
+
+#calendar_text
+{
+    position: absolute;
+    font-size: 20px;
+    bottom: 8px;
+    left: 11px;
+}
 
 .plan
 {
     width: 100%;
+    height: 55px;
+    margin-top: 5px;
     text-align: center;
-    padding-left: 7px;
     display: inline-block;
     background-color: #EEEEEE;
-    border: 1px solid #447B75;
-    border-radius: 10px;
+    border: 1px solid #3D5C59;
+    border-radius: 11px;
+    box-shadow: 3px 4px 8px 0px #5ba099;
+    font-family: 'Reem Kufi';
     font-size: 38px;
+    color: #254E49;
 }
+
 
 .triangle_button
 {
-    border: 1px solid #447B75;
+    border: 1px solid #3D5C59;
     float: right;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 100%;
     font-size: 33px;
     border-radius: 0px 10px 10px 0px;
-    background-color: #447B75;
+    background-color:#447B75;
+    box-sizing: border-box;
+    color: white;
 }
 
 .nav_buttons
 {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .nav_buttons button
 {
-    height: 30px;
-    width: 100px;
+    height: 45px;
+    width: 120px;
     border: none;
-    box-shadow: 6px 2px 4px black;
+    box-shadow: 2px 4px 6px 0px #447b75;
     border-radius: 10px;
-    margin: 7px;
     background-color: #BFEBE6;
     font-size: 15px;
     font-family: 'Rationale';
 }
 
+.nav_buttons button:hover
+{
+    transition-duration: .5s;
+    color: #EE7291B0;   
+}
+
 .selected_button
 {
     color: #EE7291B0;
+}
+
+.listname
+{
+    padding-left: 7px;
+    border-bottom: 1px solid #254E49;
+    letter-spacing: -0.05em;
+    font-family: 'Reem Kufi';
+    color: #254E49;
+    width: 208px;
 }

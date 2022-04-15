@@ -4,7 +4,7 @@ import Main from "./Main/Main";
 import axios from 'axios'
 import './App.css'
 
-const API_URL = "https://to-do-list-lab-api.herokuapp.com/api/v1/"
+const API_URL = "https://to-do-list-lab-api.herokuapp.com/api/v1/items"
 
 function getAPIData() 
 {
